@@ -13,7 +13,6 @@ public class Main {
     // my tools
     public static Scanner scanner = new Scanner(System.in);
     public static ArrayList<Transaction> accounts = new ArrayList<Transaction>();
-    public static HashMap<String,Transaction> transactions = new HashMap<String,Transaction>();
 // this is where I can run my program
     public static void main(String[] args) {
 
@@ -29,7 +28,7 @@ public class Main {
             scanner.nextLine();
 
             switch (selection) {
-                case 1 :
+                case 1:
                     System.out.print("What is the date of your deposit? (MM/DD/YYYY): ");
                     String date = scanner.nextLine();
 
@@ -46,11 +45,11 @@ public class Main {
                     double amount = scanner.nextDouble();
                     scanner.nextLine();
 
+
                     //now im creating a transaction deposit to save
-                    Transaction deposit = new Transaction(date,time,description,vendor,amount);
+                    Transaction deposit = new Transaction(date, time, description, vendor, amount);
                     try {
                         deposit.saveTransaction();
-                        System.out.println(" Deposit Saved!");
                         scanner.nextLine();
 
                     } catch (IOException e) {
@@ -59,7 +58,6 @@ public class Main {
                     System.out.println("Press Enter to return to the Home Menu...");
                     scanner.nextLine(); // waits for Enter key
                     break;
-
 
 
                 case 2:
@@ -82,19 +80,19 @@ public class Main {
                     try {
                         payment.saveTransaction();
                         System.out.println("Payment recorded! Returning to Home...");
-                    } catch (IOException e) {
-                        System.out.println("Something went wrong while saving your payment.");
-                    }
+
                     System.out.println("Press Enter to return to the Home Menu...");
                     scanner.nextLine(); // waits for Enter key
-                    try {
-                        Thread.sleep(2000); // wait 2 seconds
-                    } catch (InterruptedException e) {
+                    Thread.sleep(2000); // utilize a milla secounds loop, to create distance between screens
+                    }
+                     catch (InterruptedException e) {
                         e.printStackTrace();
+                    }
+                    catch (IOException e) {
+                        System.out.println("Something went wrong while saving your payment.");
                     }
                     break;
                 case 3:
-                    // Show ledger menu
                     boolean inLedger = true;
                     while (inLedger) {
                         System.out.println("You're in the ledger!");
